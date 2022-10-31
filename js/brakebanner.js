@@ -6,10 +6,10 @@ class BrakeBanner{
 			backgroundColor: 0x061639,
 			resizeTo: window
 		})
-
+		console.log(PIXI)
 		document.querySelector(selector).appendChild(this.app.view)
 
-		this.loader = new PIXI.Loader()
+		this.loader = PIXI.loader
 		this.stage = this.app.stage
 
 		this.resources = this.loader.resources
@@ -141,7 +141,7 @@ class BrakeBanner{
 
 		particleContainer.rotation = Math.PI/180*35
 
-		let particles = []
+		const particles = []
 		const colors = [0x9966FF, 0x9455f1, 0xf233a4, 0x336699, 0xff7904]
 
 		for (let i = 0; i < 20; i++) {
@@ -160,7 +160,8 @@ class BrakeBanner{
 			gr.y = pItem.sy
 
 			particleContainer.addChild(gr)
-
+			pItem.gr.scale.y = 20
+			pItem.gr.scale.x = .05
 			particles.push(pItem)
 		}
 
@@ -189,7 +190,6 @@ class BrakeBanner{
 		function start() {
 			speed = 0
 			gsap.ticker.add(loop)
-
 		}
 
 		function pause() {
